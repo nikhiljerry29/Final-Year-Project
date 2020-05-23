@@ -1,0 +1,44 @@
+perimeter = cv2.arcLength(cnt,True)
+(x,y),(MA,ma),angle = cv2.fitEllipse(cnt)
+
+color value
+mean_val = cv2.mean(im,mask = mask)
+
+x,y,w,h = cv2.boundingRect(cnt)
+img = cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+
+import os
+
+path, dirs, files = next(os.walk("/usr/lib"))
+count = len(files)
+print(count)
+
+
+import pandas as pd
+
+s = pd.read_csv('database/dataset_sorghum.csv')
+p = pd.read_csv('database/dataset_pearl_millet.csv')
+
+df = pd.merge(s, p, how = 'outer')
+df.to_csv("database/dataset.csv",index = False)
+
+
+
+for i in range(len(df)) :
+    arr = df.iloc[i].values
+    arr1 = df.iloc[i+1].values
+    if arr.all() == arr1.all():
+        df = df.drop(df.index[i])
+        
+
+Data for accuracies of different Neural Layers from ranging 1 to 10
+[0.8488372093023255, 0.8662790697674418, 0.8372093023255814, 0.5755813953488372, 0.5755813953488372, 0.8662790697674418, 0.5755813953488372, 0.5755813953488372, 0.5755813953488372, 0.5755813953488372]
+
+Data for accuracies of different no. of neurons in two hidden layers(same neurons per hidden layer) starting from 5 to 
+[0.8313953488372093, 0.8546511627906976, 0.8430232558139535, 0.8837209302325582, 0.8895348837209303, 0.877906976744186]
+[0.5755813953488372, 0.5755813953488372, 0.5755813953488372, 0.8255813953488372, 0.8604651162790697, 0.8604651162790697, 0.8604651162790697, 0.8895348837209303, 0.877906976744186, 0.8255813953488372]
+
+Data for accuracies of different no. of neurons in second hidden layer keeping first layer's neurons = 8 from 1 to 10
+[0.8430232558139535, 0.5755813953488372, 0.5755813953488372, 0.8197674418604651, 0.8546511627906976, 0.8546511627906976, 0.8604651162790697, 0.813953488372093, 0.9069767441860465, 0.8895348837209303]
+
+accuracyvsepochs in 2 layers 8 and 9 ratio
