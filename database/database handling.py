@@ -22,5 +22,5 @@ import pandas as pd
 # # Writing Dataset
 df = pd.read_csv('dataset.csv')
 df = df.dropna()
-print(len(df))
-df.to_csv("dataset.csv",index = False)
+print(df)
+# df.to_csv("dataset.csv",index = False)

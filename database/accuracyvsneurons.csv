@@ -1,0 +1,6 @@
+First Layer Neurons,Second Layer Neurons,Epochs,Batch_Size,Accuracy
+4,4,100,32,0.83
+5,5,100,32,0.85
+6,6,100,32,0.925
+7,7,100,32,0.885
+8,8,100,32,0.865
