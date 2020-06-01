@@ -21,12 +21,12 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
 
 
-def accuracy(first, second, n_epochs, n_batch) :
+def accuracy(first, n_epochs, n_batch) :
 	# Part 2 - Building the ANN
 	# Initializing the ANN
 	ann = Sequential()
 	ann.add(Dense(output_dim = first, init = 'uniform', activation = 'relu', input_dim = 7))
-	ann.add(Dense(output_dim = second, init = 'uniform', activation = 'relu'))
+	# ann.add(Dense(output_dim = second, init = 'uniform', activation = 'relu'))
 	# for i in range(layers):
 	# 	ann.add(Dense(output_dim = 5, init = 'uniform', activation = 'relu'))
 	ann.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid'))
@@ -53,23 +53,23 @@ def accuracy(first, second, n_epochs, n_batch) :
 
 # Checking at Different number of Layers
 df1 = pd.DataFrame(columns = ['First Layer Neurons','Second Layer Neurons','Epochs', 'Batch_Size', 'Accuracy'])
-for fir in range(6,7):
+for fir in range(4,11):
 	# first layer neurons
 	# for sec in range(7,8):
 		# second layer neurons
 	sec = fir
-	for batch in list([1,16,32,64]):
+	for batch in list([32]):
 		acc = []
 		# For Epochs count
 		for j in list([100]):
-			acc.append(accuracy(fir, sec, j, batch))
+			acc.append(accuracy(fir, j, batch))
 		# Changing into dataframe
 		# x = [i for i in range(50,101)]
 		x = [100]
 		df2 = pd.DataFrame({'First Layer Neurons': fir,'Second Layer Neurons' : sec,'Epochs' : list(x), 'Batch_Size' : batch, 'Accuracy' : list(acc)})
 		df1 = pd.merge(df1, df2, how = 'outer')
 print(df1)
-df1.to_csv('database/accuracyvsbatchsize.csv', index = False)
+df1.to_csv('database/accuracyvssinglelayer.csv', index = False)
 
 # import os
 # os.system("shutdown now -h")
