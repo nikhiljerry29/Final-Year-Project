@@ -10,6 +10,9 @@ df = df.drop('Contour Id', axis = 1)
 X = df.iloc[:, 1:].values
 y = df.iloc[:, 0].values
 
+# from sklearn.preprocessing import StandardScaler
+# X = StandardScaler().fit_transform(X)
+
 
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
@@ -49,9 +52,10 @@ def accuracy(first, second, n_epochs, n_batch) :
 	# Making the Confusion Matrix
 	from sklearn.metrics import confusion_matrix
 	cm = confusion_matrix(y_test, y_pred)
+	print (cm)
 	return (cm[0][0] + cm[1][1])/cm.sum()
 
-accuracy(8, 8, 100, 32)
+print(accuracy(10, 10, 100, 32))
 
 
 # Checking at Different number of Layers
